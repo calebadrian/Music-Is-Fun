@@ -15,19 +15,19 @@ function ItunesController(){
       if (song == 9){break;}
       if (song%3 == 0){
         template += `<div class="row m-b-1">
-                      <div class = "card-deck">`
+                      <div class="card-deck deck-format">`
       }
       template += `
           <div class="card bg-card text-center" style="width: 20rem">
-            <img class="resize img-thumbnail" src="${songList[song].albumArt}" alt="">
+            <img class="resize img-thumbnail" src="${songList[song].albumArt}" alt="" onclick="app.controllers.itunesCtrl.play(${song})">
             <div class="card-body">
               <h5 class="card-title">${songList[song].title}</h5>
-              <p class="">Artist: ${songList[song].artist}</p>
-              <p class="">Album: ${songList[song].collection}</p>
-              <p class="">Price: $${songList[song].price}</p>
+              <p class=""><b>Artist: </b>${songList[song].artist}</p>
+              <p class=""><b>Album: </b>${songList[song].collection}</p>
+              <p class=""><b>Price: </b>$${songList[song].price}</p>
             </div>
             <div class="card-footer remove-padding">
-              <audio controls>
+              <audio controls id="${song}">
                 <source src="${songList[song].preview}">
               </audio>
             </div>
@@ -39,6 +39,11 @@ function ItunesController(){
       }
     }
     songsContainer.innerHTML = template
+  }
+
+  this.play = function play(song){
+    var toPlay = document.getElementById(song)
+    toPlay.play()
   }
 
 
