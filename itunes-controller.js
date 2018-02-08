@@ -11,9 +11,14 @@ function ItunesController() {
   function draw(songList) {
     var songsContainer = document.getElementById('songs-container')
     var template = ''
+    var loopCounter = 0
     for (var song in songList) {
-      if (song == 9) { break; }
-      if (song % 3 == 0) {
+      var checkPreview = songList[song].preview
+      if (checkPreview == undefined || checkPreview.includes(".m4v")){
+        continue
+      }
+      if (loopCounter == 9) {break;}
+      if (loopCounter % 3 == 0) {
         template += `<div class="row m-b-1">
                       <div class="card-deck deck-format">`
       }
@@ -33,10 +38,16 @@ function ItunesController() {
             </div>
           </div>
       `
-      if (song == 2 || song == 5 || song == 8) {
+      if (loopCounter == 2 || loopCounter == 5 || loopCounter == 8) {
         template += `</div>
                   </div>`
       }
+      loopCounter++
+    }
+    if (loopCounter == 0){
+      template += `
+      <h1>No Music Found!</h1>
+      <h2>Try another search!</h2>`
     }
     songsContainer.innerHTML = template
   }

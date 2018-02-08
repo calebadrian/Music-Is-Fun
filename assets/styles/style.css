@@ -29,6 +29,11 @@
   margin-bottom: 1rem;
 }
 
+.submit-format {
+  background: black;
+  height: 100vh;
+}
+
 audio::-internal-media-controls-download-button {
   display: none;
 }
