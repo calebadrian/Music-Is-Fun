@@ -13,9 +13,10 @@
 </head>
 
 <body>
-    <form class="form-inline submit-format" onsubmit="app.controllers.itunesCtrl.getMusic(event)">
+    <form class="submit-format d-flex flex-column justify-content-center align-items-center" onsubmit="app.controllers.itunesCtrl.getMusic(event)">
         <!--DO NOT MODIFY THE ID OR ONCLICK ATTRIBUTES IN THIS FORM-->
-        <div class="form-group">
+        <h1>Music Sample Generator</h1>
+        <div class="form-group form-inline">
             <input type="text" class="form-control" name="artist" placeholder="Artist Name" />
             <button type="submit" class="btn btn-primary" id="get-music-button">Get Music</button>
         </div>
